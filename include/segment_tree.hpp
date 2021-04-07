@@ -14,11 +14,13 @@ namespace itis {
   struct SegmentTree {
    private:
     int size_{0};
+    int  *segmentTree_;
+	  int *array_;
 
     // Рекурсивное построение дерева по изначальному массиву.
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
     // v = 1, tl = 0, tr = n-1
-    void buildTree_(int a[], int v, int tl, int tr);
+    void buildTree_(int v, int tl, int tr);
 
     // Запрос суммы
     // l, r - границы запроса;
@@ -37,21 +39,21 @@ namespace itis {
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
     int getMin_(int l, int r, int v, int tl, int tr);
 
-    Node* tree_{nullptr};
+//    Node* tree_{nullptr};
 
    public:
 
     // заголовочном файле, как только работа будет завершена, можно будет оставить здесь только объявления.
 
-    SegmentTree(int array[], int size);
+    SegmentTree(int *array, int size);
 
     ~SegmentTree();
 
     // Обертка над рекурсивной функцией построений дерева buildTree_
-
-    void buildTree(int array[]){
-        buildTree_(array, 1, 0, size_-1);
-    };
+// не нужен не риватный
+//    void buildTree(int array[]){
+//        buildTree_(array, 1, 0, size_-1);
+//    };
 
     // Обертка над рекурсивной функцией поиска суммы на отрезке getSum_
 
