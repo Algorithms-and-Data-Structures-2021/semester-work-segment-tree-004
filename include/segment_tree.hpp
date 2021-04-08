@@ -58,24 +58,36 @@ namespace itis {
     // Обертка над рекурсивной функцией поиска суммы на отрезке getSum_
 
     int getSum(int left, int right){
-        return getSum_(left, right, 1, 0, size_-1);
+	    if (left>=0 && right<size_ && right>=left){
+		    return getSum_(left, right, 1, 0, size_-1);
+	    }
+//	    throw std::invalid_argument("index out of bounds exception");
+	    return -1;
     };
 
     // Обертка над рекурсивной функции обноления элемента update_
 
     void update(int index, int value){
-      update_(index, value, 1, 0, size_-1);
+	    if (index>=0 && index<size_){
+		    update_(index, value, 1, 0, size_-1);
+	    }
+//		throw std::invalid_argument("Denominator must not be 0.");
+	   
     }
 
     // Обертка над рекурсивной функцией поиска минимума getMin_
 
     int getMin(int left, int right){
-      return getMin_(left, right,1, 0, size_-1);
+	    if (left>=0 && right<size_ && right>=left){
+		    return getMin_(left, right,1, 0, size_-1);
+	    }
+//	    throw std::invalid_argument("index out of bounds exception");
+	    return -1;
     }
 
 
 
-    int size() const {
+    int getSize() const {
       return size_;
     }
   };

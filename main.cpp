@@ -12,7 +12,8 @@ int main() {
 		std::cin>>arr[i];
 	}
 	auto *st = new itis::SegmentTree(arr, size);
-	std::cout<<arr;
-	std::cout<<st->toString();
+
+	std::cout<<st->getMin(0,0)<<"\n";
+	std::cout<<st->getSum(0,st->getSize()-1);
   return 0;
 }
