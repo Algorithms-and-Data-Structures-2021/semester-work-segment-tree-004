@@ -6,6 +6,7 @@ namespace itis {
 	public:
 		// хранимые данные (перечисление)
 		int data;
+		
 		Node *firstChildren;
 		
 		Node *secondChildren;
@@ -21,7 +22,7 @@ namespace itis {
 	   
 		explicit Node(int e) : data{e}, firstChildren{nullptr}, secondChildren{nullptr} {}
 		
-		Node(int e, int minC) : data{e}, minChild{minC} {}
+		Node(Node *first, Node *second, int e) : firstChildren{first}, secondChildren{second}, data{e} {}
 		
 	};
 	

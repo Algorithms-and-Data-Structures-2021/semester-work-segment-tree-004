@@ -10,13 +10,12 @@ namespace itis {
    private:
   	Node *headNode;
     int size_{0};
-    int  *segmentTree_;
-	  int *array_;
+    int *array_;
 
     // Рекурсивное построение дерева по изначальному массиву.
-    // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
-    // v = 1, tl = 0, tr = n-1
-    void buildTree_(int v, int tl, int tr);
+    // v - номер текущей вершины; left, right - границы соответствующего отрезка
+    // v = 1, left = 0, right = n-1
+    Node * buildTree_(int left, int right);
 
     // Запрос суммы
     // l, r - границы запроса;
@@ -30,10 +29,7 @@ namespace itis {
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
     void update_(int idx, int val, int v, int tl, int tr);
 
-
-    // Запрос минимума
-    // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
-    int getMin_(int l, int r, int v, int tl, int tr);
+    
 
 //    Node* tree_{nullptr};
 
@@ -41,15 +37,9 @@ namespace itis {
 
     // заголовочном файле, как только работа будет завершена, можно будет оставить здесь только объявления.
 
-    SegmentTreeCount(int *array, int size);
+    SegmentTreeSum(int *array, int size);
 
-    ~SegmentTreeCount();
-
-    // Обертка над рекурсивной функцией построений дерева buildTree_
-// не нужен не риватный
-//    void buildTree(int array[]){
-//        buildTree_(array, 1, 0, size_-1);
-//    };
+    ~SegmentTreeSum();
 
     // Обертка над рекурсивной функцией поиска суммы на отрезке getSum_
 
@@ -57,7 +47,7 @@ namespace itis {
 	    if (left>=0 && right<size_ && right>=left){
 		    return getSum_(left, right, 1, 0, size_-1);
 	    }
-//	    throw std::invalid_argument("index out of bounds exception");
+	    throw std::invalid_argument("index out of bounds exception");
 	    return -1;
     };
 
@@ -67,20 +57,9 @@ namespace itis {
 	    if (index>=0 && index<size_){
 		    update_(index, value, 1, 0, size_-1);
 	    }
-//		throw std::invalid_argument("Denominator must not be 0.");
+		throw std::invalid_argument("Denominator must not be 0.");
 	   
     }
-
-    // Обертка над рекурсивной функцией поиска минимума getMin_
-
-    int getMin(int left, int right){
-	    if (left>=0 && right<size_ && right>=left){
-		    return getMin_(left, right,1, 0, size_-1);
-	    }
-//	    throw std::invalid_argument("index out of bounds exception");
-	    return -1;
-    }
-
 
 
     int getSize() const {
