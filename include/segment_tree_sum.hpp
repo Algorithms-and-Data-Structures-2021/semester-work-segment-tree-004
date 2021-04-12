@@ -63,7 +63,9 @@ namespace itis {
 	    if (index>=0 && index<size_){
 		    update_(headNode,index, value, 0, size_-1);
 	    }
-	    throw std::invalid_argument("invalid_argument");
+	    else{
+		    throw std::invalid_argument("invalid_argument");
+	    }
     }
 
 

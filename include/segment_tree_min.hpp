@@ -41,8 +41,9 @@ namespace itis {
 		void update (int index, int value) {
 			if (index >= 0 && index < size_) {
 				update_ (headNode,index, value, 0, size_-1);
+			} else{
+				throw std::invalid_argument("invalid_argument");
 			}
-			throw std::invalid_argument("invalid_argument");
 		}
 		
 		// Обертка над рекурсивной функцией поиска минимума getMin_
