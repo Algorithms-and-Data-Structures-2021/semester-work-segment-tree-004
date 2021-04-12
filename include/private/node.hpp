@@ -7,9 +7,9 @@ namespace itis {
 		// хранимые данные (перечисление)
 		int data;
 		
-		Node *firstChildren;
+		Node *leftChildren;
 		
-		Node *secondChildren;
+		Node *rightChildren;
 		
 		// указатель на следующий узел (хранит в себе адрес участка памяти)
 		
@@ -20,9 +20,9 @@ namespace itis {
 	   * @param ptr указатель на следующий узел
 	   */
 	   
-		explicit Node(int e) : data{e}, firstChildren{nullptr}, secondChildren{nullptr} {}
+		explicit Node(int e) : data{e}, leftChildren{nullptr}, rightChildren{nullptr} {}
 		
-		Node(Node *first, Node *second, int e) : firstChildren{first}, secondChildren{second}, data{e} {}
+		Node(Node *first, Node *second, int e) : leftChildren{first}, rightChildren{second}, data{e} {}
 		
 	};
 	

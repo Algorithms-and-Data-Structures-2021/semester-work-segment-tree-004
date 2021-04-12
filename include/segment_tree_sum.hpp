@@ -21,13 +21,13 @@ namespace itis {
     // l, r - границы запроса;
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
     // v = 1, tl = 0, tr = n-1,
-    int getSum_(int l, int r, int v, int tl, int tr);
+    int getSum_(Node *node,int left, int right, int tempLeft, int tempRight);
 
 
     // Запрос модификации
     // idx - индекс элемента, val - новое значение
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
-    void update_(int idx, int val, int v, int tl, int tr);
+    Node * update_(Node * node,int index, int newValue, int tempLeft, int tempRight);
 
     
 
@@ -45,7 +45,7 @@ namespace itis {
 
     int getSum(int left, int right){
 	    if (left>=0 && right<size_ && right>=left){
-		    return getSum_(left, right, 1, 0, size_-1);
+		    return getSum_(headNode,left, right, 0, size_-1);
 	    }
 	    throw std::invalid_argument("index out of bounds exception");
 	    return -1;

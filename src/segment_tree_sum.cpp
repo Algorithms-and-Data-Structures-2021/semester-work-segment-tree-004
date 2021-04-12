@@ -15,38 +15,44 @@ namespace itis {
 
 	Node * SegmentTreeSum::buildTree_ (int left, int right) {
 		if (left == right){
-			return new Node (array_[left]);
+			return new Node (array_[right]);
 		}
 
 		int tm = (left + right) / 2;
-		Node *firstChildren = buildTree_ (left, tm);
-		Node *secondChildren = buildTree_ (tm+1, right);
-		return new Node (firstChildren,secondChildren, firstChildren->data+secondChildren->data);
+		Node *leftChildren = buildTree_ (left, tm);
+		Node *rightChildren = buildTree_ (tm + 1, right);
+		return new Node (leftChildren, rightChildren, leftChildren->data + rightChildren->data);
 	}
 
-	int SegmentTreeSum::getSum_ (Node *node,int l, int r, int v, int tl, int tr) {
+	int SegmentTreeSum::getSum_ (Node *node,int left, int right, int tempLeft, int tempRight) {
+		if (left>right){
+			return getSum_(node,right,left,tempLeft,tempRight);
+		}
+		if (left==tempLeft && right == tempRight){
+			return node->data;
+		}
+		int midl = (right+left) / 2;
+		return getSum_(node->leftChildren, left, right, left, midl) +
+			   getSum_(node->rightChildren, left, right, midl, right);
+	}
 	
+	Node * SegmentTreeSum::update_ (Node * node,int index, int newValue, int tempLeft, int tempRight) {
+		if (tempRight==tempLeft){
+			delete node;
+			return new Node(newValue);
+		}
+		int midl = (tempLeft+tempRight)/2;
+		if (index <= midl){
+			delete node->leftChildren;
+			Node * newLeftNode = update_ (node->leftChildren,index ,newValue, tempLeft, midl);
+			return new Node (newLeftNode,node->rightChildren,newLeftNode->data+node->rightChildren->data);
+		}
+		else{
+			delete node->rightChildren;
+			Node *newRightNode = update_ (node->rightChildren, index,newValue,midl+1, tempRight);
+			return new Node (node->leftChildren, newRightNode,node->leftChildren->data+newRightNode->data);
+		}
 	}
-
-//	void SegmentTreeSum::update_ (int idx, int val, int v, int tl, int tr) {
-//		//вариант 1
-//		if (idx <= tl && tr <= idx) {    //То же, что и idx == tl == tr
-//			array_[idx] = val;
-//			segmentTree_[v] = val;
-//			return;
-//		}
-//
-//		//вариант 2
-//		if (tr < idx || idx < tl) {
-//			return;
-//		}
-//
-//		//вариант 3
-//		int tm = (tl + tr) / 2;
-//		update_ (idx, val, v * 2, tl, tm);
-//		update_ (idx, val, v * 2 + 1, tm + 1, tr);
-//		segmentTree_[v] = segmentTree_[v * 2] + segmentTree_[v * 2 + 1];
-//	}
 
 
 }  // namespace itis
