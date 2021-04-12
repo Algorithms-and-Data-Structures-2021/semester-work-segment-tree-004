@@ -54,7 +54,7 @@ def create_graphs():
     plt.title(benchmark_results[0].name)
 
     plt.ylabel("время", size=14, color='green')
-    plt.xlabel("размер набора", size=14,color='green')
+    plt.xlabel("размер нgit aабора", size=14,color='green')
 
     plt.legend()
     plt.show()
