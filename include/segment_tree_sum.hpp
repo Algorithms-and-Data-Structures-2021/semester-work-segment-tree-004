@@ -31,7 +31,6 @@ namespace itis {
 
     
 
-//    Node* tree_{nullptr};
 
    public:
 
@@ -46,18 +45,19 @@ namespace itis {
     int getSum(int left, int right){
 	    if (left>=0 && right<size_ && right>=left){
 		    return getSum_(headNode,left, right, 0, size_-1);
+	    } else{
+		    throw std::invalid_argument("index out of bounds exception");
 	    }
-	    throw std::invalid_argument("index out of bounds exception");
-	    return -1;
     };
 
     // Обертка над рекурсивной функции обноления элемента update_
 
     void update(int index, int value){
 	    if (index>=0 && index<size_){
-		    update_(index, value, 1, 0, size_-1);
+		    update_(headNode,index, value, 0, size_-1);
+	    } else{
+		    throw std::invalid_argument("Denominator must not be 0.");
 	    }
-		throw std::invalid_argument("Denominator must not be 0.");
 	   
     }
 
