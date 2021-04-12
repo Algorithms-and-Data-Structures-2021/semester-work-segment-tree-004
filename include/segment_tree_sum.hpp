@@ -3,7 +3,7 @@
 // Заголовочный файл с объявлением структуры данных
 
 #include <private/node.hpp>
-
+#include <stdexcept>
 namespace itis {
 
   struct SegmentTreeSum {
@@ -51,16 +51,19 @@ namespace itis {
 	    if (left>right){
 		    return getSum_(headNode,right, left, 0, size_-1);
 	    }
-	    
-	    return getSum_(headNode,left, right, 0, size_-1);
+	    if (left>=0 && right<size_){
+		    return getSum_(headNode,left, right, 0, size_-1);
+	    }
+	    throw std::invalid_argument("invalid_argument");
     };
-//[1] + [2] - [3] = ?
+
     // Обертка над рекурсивной функции обноления элемента update_
 
     void update(int index, int value){
 	    if (index>=0 && index<size_){
 		    update_(headNode,index, value, 0, size_-1);
 	    }
+	    throw std::invalid_argument("invalid_argument");
     }
 
 

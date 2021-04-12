@@ -47,7 +47,7 @@ namespace itis {
 	
 	int SegmentTreeMin::getMin_ (Node *node, int left, int right, int tempLeft, int tempRight) {
 		if (left > right) {
-			INT_MAX;
+			return INT_MAX;
 		}
 		if (left == tempLeft && right == tempRight) {
 			return node->data_;

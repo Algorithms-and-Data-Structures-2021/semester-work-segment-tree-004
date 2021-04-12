@@ -16,10 +16,10 @@ int main () {
 	SegmentTreeMin *s1 = new SegmentTreeMin (firstArray, size);
 //	cout<<s1->getMin(0,7);
 //	cout<<s1->getMin(0,0);
-	cout<<s1->getMin(0,1);
+//	cout<<s1->getMin(0,1);
 //	cout<<s1->getMin(8,8);
 //	cout<<s1->getMin(5,6);
-//	cout<<s1->getMin(0,7);
+	cout<<s1->getMin(0,7);
 
 	return 0;
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "segment_tree_sum.hpp"
-
+#include <stdexcept>
 namespace itis {
 	struct SegmentTreeMin {
 	private:
@@ -36,21 +36,13 @@ namespace itis {
 		
 		~SegmentTreeMin ();
 		
-		// Обертка над рекурсивной функцией построений дерева buildTree_
-// не нужен не риватный
-//    void buildTree(int array[]){
-//        buildTree_(array, 1, 0, size_-1);
-//    };
-		
-		
 		// Обертка над рекурсивной функции обноления элемента update_
 		
 		void update (int index, int value) {
 			if (index >= 0 && index < size_) {
 				update_ (headNode,index, value, 0, size_-1);
 			}
-//		throw std::invalid_argument("Denominator must not be 0.");
-		
+			throw std::invalid_argument("invalid_argument");
 		}
 		
 		// Обертка над рекурсивной функцией поиска минимума getMin_
@@ -62,7 +54,10 @@ namespace itis {
 			if (left>right){
 				return getMin_(headNode,right, left, 0, size_-1);
 			}
-			return getMin_ (headNode,left, right, 0, size_-1);
+			if (left>=0 && right<size_){
+				return getMin_ (headNode,left, right, 0, size_-1);
+			}
+			throw std::invalid_argument("invalid_argument");
 		}
 		
 		
