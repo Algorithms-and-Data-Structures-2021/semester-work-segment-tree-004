@@ -5,19 +5,13 @@ DEFAULT_SAMPLES = 100
 
 
 def parse_args():
-    """
-    Парсинг аргументов командной строки (CLI).
-    :return интерфейс для работы с аргументами.
-
-    Больше информации на https://docs.python.org/3.7/howto/argparse.html
-    """
     parser = argparse.ArgumentParser(description=DEFAULT_DESCRIPTION)
 
     parser.add_argument('output',
                         type=str,
                         help='output CSV file, e.g. data/output.csv')
 
-    parser.add_argument('--samples',
+    parser.add_argument('samples',
                         type=int,
                         default=DEFAULT_SAMPLES,
                         help='number of samples to generate (default: {})'.format(DEFAULT_SAMPLES))
@@ -34,6 +28,6 @@ if __name__ == '__main__':
 
     # запись данных в файл
     with open(args.output, 'w') as file:
-        for i in range(args.samples - 1):
+        for i in range(1, args.samples):
             file.write('{},'.format(i))
-        file.write(str(args.samples - 1))
+        file.write(str(args.samples))
