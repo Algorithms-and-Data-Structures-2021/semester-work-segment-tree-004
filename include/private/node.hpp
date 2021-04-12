@@ -5,11 +5,11 @@ namespace itis {
 	struct Node final {
 	public:
 		// хранимые данные (перечисление)
-		int data;
+		int data_;
 		
-		Node *leftChildren;
+		Node *leftChildren_;
 		
-		Node *rightChildren;
+		Node *rightChildren_;
 		
 		// указатель на следующий узел (хранит в себе адрес участка памяти)
 		
@@ -19,10 +19,17 @@ namespace itis {
 	   * @param e - данные узла
 	   * @param ptr указатель на следующий узел
 	   */
-	   
-		explicit Node(int e) : data{e}, leftChildren{nullptr}, rightChildren{nullptr} {}
 		
-		Node(Node *first, Node *second, int e) : leftChildren{first}, rightChildren{second}, data{e} {}
+		explicit Node (int e) : data_{e}, leftChildren_{nullptr}, rightChildren_{nullptr} {}
+		
+		virtual ~Node () {
+			delete leftChildren_;
+			delete rightChildren_;
+			rightChildren_ = nullptr;
+			leftChildren_ = nullptr;
+		}
+		
+		Node (Node *first, Node *second, int e) : leftChildren_{first}, rightChildren_{second}, data_{e} {}
 		
 	};
 	

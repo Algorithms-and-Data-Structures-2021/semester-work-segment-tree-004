@@ -7,7 +7,7 @@
 namespace itis {
 
   struct SegmentTreeSum {
-   private:
+  private:
   	Node *headNode;
     int size_{0};
     int *array_;
@@ -28,11 +28,13 @@ namespace itis {
     // idx - индекс элемента, val - новое значение
     // v - номер текущей вершины; tl, tr - границы соответствующего отрезка
     Node * update_(Node * node,int index, int newValue, int tempLeft, int tempRight);
+	
+    //рекурсивное удаление узлов
+    void deleteNodes (Node *pNode);
 
-    
 
 
-   public:
+  public:
 
     // заголовочном файле, как только работа будет завершена, можно будет оставить здесь только объявления.
 
@@ -43,28 +45,29 @@ namespace itis {
     // Обертка над рекурсивной функцией поиска суммы на отрезке getSum_
 
     int getSum(int left, int right){
-	    if (left>=0 && right<size_ && right>=left){
-		    return getSum_(headNode,left, right, 0, size_-1);
-	    } else{
-		    throw std::invalid_argument("index out of bounds exception");
+	    if (left==right && left<size_ && right>=0){
+		    return array_[right];
 	    }
+	    if (left>right){
+		    return getSum_(headNode,right, left, 0, size_-1);
+	    }
+	    
+	    return getSum_(headNode,left, right, 0, size_-1);
     };
-
+//[1] + [2] - [3] = ?
     // Обертка над рекурсивной функции обноления элемента update_
 
     void update(int index, int value){
 	    if (index>=0 && index<size_){
 		    update_(headNode,index, value, 0, size_-1);
-	    } else{
-		    throw std::invalid_argument("Denominator must not be 0.");
 	    }
-	   
     }
 
 
     int getSize() const {
       return size_;
     }
+	
   };
 
 }  // namespace itis
