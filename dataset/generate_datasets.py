@@ -3,6 +3,7 @@ import os
 
 DATASETS_JSON = "datasets.json"
 
+
 class Dataset(object):
     def __init__(self, samples_count, output_path):
         self.samples_count = samples_count
