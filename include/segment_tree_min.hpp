@@ -1,35 +1,32 @@
-//
-// Created by ЧИКИРЯУ on 12.04.2021.
-//
 #pragma once
-#ifndef SEMESTER_WORK_TEMPLATE_SEGMENT_TREE_MIN_H
-#define SEMESTER_WORK_TEMPLATE_SEGMENT_TREE_MIN_H
 
-#endif //SEMESTER_WORK_TEMPLATE_SEGMENT_TREE_MIN_H
+#include "segment_tree_sum.hpp"
+
 namespace itis {
 	struct SegmentTreeMin {
 	private:
+		Node *headNode;
 		int size_{0};
-		int *segmentTree_;
 		int *array_;
 		
 		// Рекурсивное построение дерева по изначальному массиву.
 		// v - номер текущей вершины; tl, tr - границы соответствующего отрезка
 		// v = 1, tl = 0, tr = n-1
-		void buildTree_ (int v, int tl, int tr);
+		Node *buildTree_ (int left, int right);
 		
 		
 		// Запрос модификации
 		// idx - индекс элемента, val - новое значение
 		// v - номер текущей вершины; tl, tr - границы соответствующего отрезка
-		void update_ (int idx, int val, int v, int tl, int tr);
+		Node *update_ (Node *node, int index, int newValue, int tempLeft, int tempRight);
 		
 		
 		// Запрос минимума
 		// v - номер текущей вершины; tl, tr - границы соответствующего отрезка
-		int getMin_ (int l, int r, int v, int tl, int tr);
-
-//    Node* tree_{nullptr};
+		int getMin_ (Node *node, int left, int right, int tempLeft, int tempRight);
+		
+		//рекурсивное удаление узлов
+		void deleteNodes_ (Node *pNode);
 	
 	public:
 		
@@ -50,7 +47,7 @@ namespace itis {
 		
 		void update (int index, int value) {
 			if (index >= 0 && index < size_) {
-				update_ (index, value, 1, 0, size_ - 1);
+				update_ (headNode,index, value, 0, size_-1);
 			}
 //		throw std::invalid_argument("Denominator must not be 0.");
 		
@@ -59,16 +56,18 @@ namespace itis {
 		// Обертка над рекурсивной функцией поиска минимума getMin_
 		
 		int getMin (int left, int right) {
-			if (left >= 0 && right < size_ && right >= left) {
-				return getMin_ (left, right, 1, 0, size_ - 1);
+			if (left==right && left<size_ && right>=0){
+				return array_[right];
 			}
-//	    throw std::invalid_argument("index out of bounds exception");
-			return -1;
+			if (left>right){
+				return getMin_(headNode,right, left, 0, size_-1);
+			}
+			return getMin_ (headNode,left, right, 0, size_-1);
 		}
 		
 		
 		int getSize () const {
 			return size_;
 		}
-	}
+	};
 };// namespace itis

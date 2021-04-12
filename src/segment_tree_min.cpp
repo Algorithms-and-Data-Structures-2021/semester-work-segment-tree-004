@@ -6,86 +6,66 @@
 // файл с определениями
 
 namespace itis {
-	SegmentTree::SegmentTree (int *array, int size) : size_{size} {
-		array_ = array;
-		segmentTree_ = new int[2 * size];
-		std::copy (array, array + size, segmentTree_ + size);
-		buildTree_ (1, 0, size_ - 1);
+	SegmentTreeMin::SegmentTreeMin (int *array, int size) : size_{size}, array_ (array) {
+		buildTree_ (0, size_ - 1);
 	}
 	
-	SegmentTree::~SegmentTree () {
-		delete[] segmentTree_;
-		segmentTree_ = nullptr;
+	SegmentTreeMin::~SegmentTreeMin () {
+		deleteNodes_ (headNode);
 		size_ = 0;
 	}
 	
-	void SegmentTree::buildTree_ (int v, int tl, int tr) {
-		if (tl == tr) {
-			segmentTree_[v] = array_[tl];    //сумма отрезка из одного элемента равна этому элементу
+	Node *SegmentTreeMin::buildTree_ (int left, int right) {
+		if (left == right) {
+			return new Node (array_[right]);
+		}
+		
+		int midl = (left + right) / 2;
+		Node *leftChildren = buildTree_ (left, midl);
+		Node *rightChildren = buildTree_ (midl + 1, right);
+		headNode = new Node (leftChildren, rightChildren,
+		                     leftChildren->data_ > rightChildren->data_ ? rightChildren->data_ : leftChildren->data_);
+		return headNode;
+	}
+	
+	Node *SegmentTreeMin::update_ (Node *node, int index, int newValue, int tempLeft, int tempRight) {
+		if (tempRight == tempLeft) {
+			node->data_ = newValue;
+			return node;
+		}
+		int midl = (tempLeft + tempRight) / 2;
+		if (index <= midl) {
+			update_ (node->leftChildren_, index, newValue, tempLeft, midl);
+			node->data_ = std::min(node->leftChildren_->data_, node->rightChildren_->data_);
 		} else {
-			//tm - средний элемент отрезка.
-			//отрезок разбивается на два отрезка [tl; tm], [tm + 1; tr]
-			int tm = (tl + tr) / 2;
-			buildTree_ (v * 2, tl, tm);
-			buildTree_ (v * 2 + 1, tm + 1, tr);
-			//todo create node for min search
-			segmentTree_[v] = segmentTree_[v * 2] + segmentTree_[v * 2 + 1];
+			update_ (node->rightChildren_, index, newValue, midl + 1, tempRight);
+			node->data_ = std::min(node->leftChildren_->data_, node->rightChildren_->data_);
 		}
+		return node;
 	}
 	
-	int SegmentTree::getSum_ (int l, int r, int v, int tl, int tr) {
-		//вариант 1
-		if (l <= tl && tr <= r) {
-			return segmentTree_[v];
+	
+	int SegmentTreeMin::getMin_ (Node *node, int left, int right, int tempLeft, int tempRight) {
+		if (left > right) {
+			INT_MAX;
 		}
-		
-		//вариант 2
-		if (tr < l || r < tl) {
-			return 0;
+		if (left == tempLeft && right == tempRight) {
+			return node->data_;
 		}
-		
-		//вариант 3
-		int tm = (tl + tr) / 2;
-		return getSum_ (l, r, v * 2, tl, tm)
-		       + getSum_ (l, r, v * 2 + 1, tm + 1, tr);
+		int midl = (tempRight + tempLeft) / 2;
+		int temp1 = getMin_ (node->leftChildren_, left, std::min (right, midl), tempLeft, midl);
+		int temp2 = getMin_ (node->rightChildren_, std::max (left, midl + 1), right, midl + 1, tempRight);
+		return temp1 > temp2 ? temp2 : temp1;
 	}
 	
-	void SegmentTree::update_ (int idx, int val, int v, int tl, int tr) {
-		//вариант 1
-		if (idx <= tl && tr <= idx) {    //То же, что и idx == tl == tr
-			array_[idx] = val;
-			segmentTree_[v] = val;
-			return;
+	void SegmentTreeMin::deleteNodes_ (Node *pNode) {
+		if (pNode->leftChildren_ != nullptr) {
+			deleteNodes_ (pNode->leftChildren_);
 		}
-		
-		//вариант 2
-		if (tr < idx || idx < tl) {
-			return;
+		if (pNode->rightChildren_ != nullptr) {
+			deleteNodes_ (pNode->rightChildren_);
 		}
-		
-		//вариант 3
-		int tm = (tl + tr) / 2;
-		update_ (idx, val, v * 2, tl, tm);
-		update_ (idx, val, v * 2 + 1, tm + 1, tr);
-		segmentTree_[v] = segmentTree_[v * 2] + segmentTree_[v * 2 + 1];
+		delete pNode;
 	}
-	
-	int SegmentTree::getMin_ (int l, int r, int v, int tl, int tr) {
-		//вариант 1
-		if (l <= tl && tr <= r) {
-			return segmentTree_[v];
-		}
-		
-		//вариант 2
-		if (tr < l || r < tl) {
-			return INT_MAX;     //Значение, которое не повлияет на общий минимум
-		}
-		
-		//вариант 3
-		int tm = (tl + tr) / 2;
-		return std::min(getMin_(l, r, v * 2,     tl,     tm),
-		                getMin_(l, r, v * 2 + 1, tm + 1, tr));
-	}
-	
 	
 }  // namespace itis

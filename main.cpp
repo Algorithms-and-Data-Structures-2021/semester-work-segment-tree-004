@@ -1,19 +1,25 @@
 #include <iostream>
+#include <segment_tree_min.hpp>
 
 #include "segment_tree_sum.hpp"
 
+using namespace itis;
 using namespace std;
 
-int main() {
-	int size;
-	std::cin>>size;
-	int *arr = new int [size];
+int main () {
+	int  size;
+	cin>>size;
+	int *firstArray = new int[size];
 	for (int i = 0; i < size; ++i) {
-		std::cin>>arr[i];
+		cin>>firstArray[i];
 	}
-	auto *st = new itis::SegmentTree(arr, size);
+	SegmentTreeMin *s1 = new SegmentTreeMin (firstArray, size);
+//	cout<<s1->getMin(0,7);
+//	cout<<s1->getMin(0,0);
+	cout<<s1->getMin(0,1);
+//	cout<<s1->getMin(8,8);
+//	cout<<s1->getMin(5,6);
+//	cout<<s1->getMin(0,7);
 
-	std::cout<<st->getMin(0,0)<<"\n";
-	std::cout<<st->getSum(0,st->getSize()-1);
-  return 0;
+	return 0;
 }
