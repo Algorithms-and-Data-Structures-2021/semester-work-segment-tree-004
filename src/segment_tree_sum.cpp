@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "segment_tree_count.hpp"
+#include "segment_tree_sum.hpp"
 // файл с определениями
 
 namespace itis {

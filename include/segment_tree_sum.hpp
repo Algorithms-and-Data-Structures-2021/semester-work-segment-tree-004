@@ -6,7 +6,7 @@
 
 namespace itis {
 
-  struct SegmentTreeCount {
+  struct SegmentTreeSum {
    private:
   	Node *headNode;
     int size_{0};

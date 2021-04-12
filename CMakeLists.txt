@@ -34,8 +34,8 @@ target_compile_definitions(project_paths INTERFACE
 # Это самое главное, что вы должны реализовать в рамках семестрового проекта.
 
 add_library(${PROJECT_NAME} STATIC
-        src/segment_tree_count.cpp
-        include/segment_tree_count.hpp include/private/node.hpp include/segment_tree_min.hpp src/segment_tree_min.cpp include/private/node.hpp)
+        src/segment_tree_sum.cpp
+        include/segment_tree_sum.hpp include/private/node.hpp include/segment_tree_min.hpp src/segment_tree_min.cpp include/private/node.hpp)
 
 # включить предупреждения компилятора для библиотеки (линковка)
 target_link_libraries(${PROJECT_NAME} PRIVATE project_warnings)

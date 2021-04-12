@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "segment_tree_count.hpp"
+#include "segment_tree_sum.hpp"
 
 using namespace std;
 
