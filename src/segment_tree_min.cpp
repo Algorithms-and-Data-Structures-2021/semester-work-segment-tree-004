@@ -1,5 +1,8 @@
+//
+// Created by ЧИКИРЯУ on 12.04.2021.
+//
 #include <algorithm>
-#include "segment_tree.hpp"
+#include "segment_tree_min.hpp"
 // файл с определениями
 
 namespace itis {
@@ -11,12 +14,12 @@ namespace itis {
 	}
 	
 	SegmentTree::~SegmentTree () {
-		// TODO
 		delete[] segmentTree_;
+		segmentTree_ = nullptr;
+		size_ = 0;
 	}
 	
 	void SegmentTree::buildTree_ (int v, int tl, int tr) {
-		// TODO
 		if (tl == tr) {
 			segmentTree_[v] = array_[tl];    //сумма отрезка из одного элемента равна этому элементу
 		} else {
@@ -81,7 +84,7 @@ namespace itis {
 		//вариант 3
 		int tm = (tl + tr) / 2;
 		return std::min(getMin_(l, r, v * 2,     tl,     tm),
-				  getMin_(l, r, v * 2 + 1, tm + 1, tr));
+		                getMin_(l, r, v * 2 + 1, tm + 1, tr));
 	}
 	
 	

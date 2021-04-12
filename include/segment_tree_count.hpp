@@ -1,18 +1,14 @@
 #pragma once
 
-#include "private/node.hpp"
 // Заголовочный файл с объявлением структуры данных
+
+#include <private/node.hpp>
 
 namespace itis {
 
-  // Tip 1: объявите здесь необходимые структуры, функции, константы и прочее
-
-  // Пример: объявление константы времени компиляции в заголовочном файле
-  inline constexpr auto kStringConstant = "Hello, stranger!";
-
-  // Пример: объявление структуры с полями и методами
-  struct SegmentTree {
+  struct SegmentTreeCount {
    private:
+  	Node *headNode;
     int size_{0};
     int  *segmentTree_;
 	  int *array_;
@@ -45,9 +41,9 @@ namespace itis {
 
     // заголовочном файле, как только работа будет завершена, можно будет оставить здесь только объявления.
 
-    SegmentTree(int *array, int size);
+    SegmentTreeCount(int *array, int size);
 
-    ~SegmentTree();
+    ~SegmentTreeCount();
 
     // Обертка над рекурсивной функцией построений дерева buildTree_
 // не нужен не риватный
