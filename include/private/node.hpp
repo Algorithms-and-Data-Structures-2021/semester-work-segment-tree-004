@@ -22,13 +22,6 @@ namespace itis {
 		
 		explicit Node (int e) : data_{e}, leftChildren_{nullptr}, rightChildren_{nullptr} {}
 		
-		virtual ~Node () {
-			delete leftChildren_;
-			delete rightChildren_;
-			rightChildren_ = nullptr;
-			leftChildren_ = nullptr;
-		}
-		
 		Node (Node *first, Node *second, int e) : leftChildren_{first}, rightChildren_{second}, data_{e} {}
 		
 	};

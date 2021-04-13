@@ -14,10 +14,10 @@ int main () {
 		cin>>firstArray[i];
 	}
 	SegmentTreeMin *s1 = new SegmentTreeMin (firstArray, size);
-	s1->update(1,0);
-	s1->update(2,-1);
-	s1->update(3,-50);
-	cout<<s1->getMin(0,7);
-
+//	s1->update(1,0);
+//	s1->update(2,-1);
+//	s1->update(3,-50);
+//	cout<<s1->getMin(0,7);
+delete s1;
 	return 0;
 }
