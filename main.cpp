@@ -19,5 +19,7 @@ int main () {
 //	s1->update(3,-50);
 //	cout<<s1->getMin(0,7);
 delete s1;
+s1->getSize();
+s1->getMin(0,size-1);
 	return 0;
 }

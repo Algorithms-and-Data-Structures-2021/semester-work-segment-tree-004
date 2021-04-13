@@ -11,7 +11,8 @@ namespace itis {
 	}
 	
 	SegmentTreeMin::~SegmentTreeMin () {
-		deleteNodes_ (headNode);
+		deleteNodes_ (headNode_);
+		headNode_= nullptr;
 		size_ = 0;
 	}
 	
@@ -23,9 +24,9 @@ namespace itis {
 		int midl = (left + right) / 2;
 		Node *leftChildren = buildTree_ (left, midl);
 		Node *rightChildren = buildTree_ (midl + 1, right);
-		headNode = new Node (leftChildren, rightChildren,
+		headNode_ = new Node (leftChildren, rightChildren,
 		                     leftChildren->data_ > rightChildren->data_ ? rightChildren->data_ : leftChildren->data_);
-		return headNode;
+		return headNode_;
 	}
 	
 	Node *SegmentTreeMin::update_ (Node *node, int index, int newValue, int tempLeft, int tempRight) {

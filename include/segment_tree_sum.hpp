@@ -8,7 +8,7 @@ namespace itis {
 
   struct SegmentTreeSum {
   private:
-  	Node *headNode;
+  	Node *headNode_;
     int size_{0};
     int *array_;
 
@@ -49,10 +49,10 @@ namespace itis {
 		    return array_[right];
 	    }
 	    if (left>right){
-		    return getSum_(headNode,right, left, 0, size_-1);
+		    return getSum_(headNode_, right, left, 0, size_ - 1);
 	    }
 	    if (left>=0 && right<size_){
-		    return getSum_(headNode,left, right, 0, size_-1);
+		    return getSum_(headNode_, left, right, 0, size_ - 1);
 	    }
 	    throw std::invalid_argument("invalid_argument");
     };
@@ -61,7 +61,7 @@ namespace itis {
 
     void update(int index, int value){
 	    if (index>=0 && index<size_){
-		    update_(headNode,index, value, 0, size_-1);
+		    update_(headNode_, index, value, 0, size_ - 1);
 	    }
 	    else{
 		    throw std::invalid_argument("invalid_argument");

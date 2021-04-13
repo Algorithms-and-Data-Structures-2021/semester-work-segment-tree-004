@@ -8,8 +8,8 @@ namespace itis {
 	}
 	
 	SegmentTreeSum::~SegmentTreeSum () {
-		//todo delete nods
-		deleteNodes (headNode);
+		deleteNodes (headNode_);
+		headNode_ = nullptr;
 		size_ = 0;
 	}
 	
@@ -21,8 +21,8 @@ namespace itis {
 		int midl = (left + right) / 2;
 		Node *leftChildren = buildTree_ (left, midl);
 		Node *rightChildren = buildTree_ (midl + 1, right);
-		headNode = new Node (leftChildren, rightChildren, leftChildren->data_ + rightChildren->data_);
-		return headNode;
+		headNode_ = new Node (leftChildren, rightChildren, leftChildren->data_ + rightChildren->data_);
+		return headNode_;
 	}
 	
 	int SegmentTreeSum::getSum_ (Node *node, int left, int right, int tempLeft, int tempRight) {
