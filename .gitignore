@@ -36,3 +36,7 @@
 
 # Build files
 *build*
+
+venv
+
+dataset/data

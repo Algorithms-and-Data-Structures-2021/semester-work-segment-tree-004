@@ -4,8 +4,6 @@
 #include <string_view>  // string_view
 #include <chrono>       // high_resolution_clock, duration_cast, nanoseconds
 #include <sstream>      // stringstream
-#include <string>       // string
-#include <fstream>
 #include <vector>       // vector
 #include <iterator>     // istream_iterator
 // подключаем вашу структуру данных
@@ -18,7 +16,7 @@ using namespace itis;
 static constexpr auto kDatasetPath = string_view{PROJECT_DATASET_DIR};
 static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 static constexpr auto kBenchmarkResultsPath = string_view{PROJECT_BENCHMARK_RESULT_DIR};
-static const string  kBenchmarkResultOutputFile = "demo_benchmark.csv";
+static const string kBenchmarkResultOutputFile = "segment_tree_sum_getSum_benchmark.csv";
 
 int main(int argc, char **argv) {
 
@@ -53,7 +51,7 @@ int main(int argc, char **argv) {
     }
     istringstream iss(line);
     vector<std::string> dataset_settings(istream_iterator<std::string>{iss},
-                                     istream_iterator<std::string>());
+                                         istream_iterator<std::string>());
     auto input_file = ifstream(path + "/" + dataset_settings[0]);
     int count_of_samples = stoi(dataset_settings[1]);
 
@@ -63,12 +61,14 @@ int main(int argc, char **argv) {
       input_file >> dataset[0];
     }
 
-    const auto time_point_before = chrono::high_resolution_clock::now();
-
-    // здесь находится участок кода, время которого необходимо замерить
     auto segmentTreeSum = new SegmentTreeSum(dataset, count_of_samples);
 
-    const auto time_point_after = chrono::high_resolution_clock::now();
+    const auto time_point_before = chrono::steady_clock::now();
+
+    // здесь находится участок кода, время которого необходимо замерить
+    segmentTreeSum->getSum(0,count_of_samples-1);
+
+    const auto time_point_after = chrono::steady_clock::now();
 
     const auto time_diff = time_point_after - time_point_before;
     const long time_elapsed_ns = chrono::duration_cast<chrono::nanoseconds>(time_diff).count();
@@ -77,8 +77,6 @@ int main(int argc, char **argv) {
     benchmark_result_output.flush();
     input_file.close();
   }
-
-  // Контрольный тест: операции добавления, удаления, поиска и пр. над структурой данных
 
   return 0;
 }

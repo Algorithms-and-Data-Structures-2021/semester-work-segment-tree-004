@@ -2,6 +2,7 @@ import json
 import os
 
 DATASETS_JSON = "datasets.json"
+BENCHMARK_SETTINGS_FILE = "data/benchmarkSettings.settings"
 
 
 class Dataset(object):
@@ -23,10 +24,17 @@ def create_datasets():
     target_folder = datasets_dict["targetFolder"]
     file_format = datasets_dict["fileFormat"]
 
+    benchmark_settings_file = open(BENCHMARK_SETTINGS_FILE, "w")
+
     for dataset in datasets_dict["datasets"]:
         Dataset(dataset["samplesCount"],
                 os.path.dirname(__file__) + "/" + target_folder + dataset["outputFileName"] + "." + file_format)\
             .create_dataset()
+        benchmark_settings_file.write(dataset["outputFileName"] +
+                                      "." + file_format + " " +
+                                      str(dataset["samplesCount"]) + "\n")
+
+    benchmark_settings_file.close()
 
 
 if __name__ == "__main__":
