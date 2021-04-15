@@ -32,7 +32,7 @@ def create_datasets():
             .create_dataset()
         benchmark_settings_file.write(dataset["outputFileName"] +
                                       "." + file_format + " " +
-                                      str(dataset["samplesCount"]) + "\n")
+                                      str(dataset["samplesCount"]) + " " + str(dataset["numberOfPasses"]) +"\n")
 
     benchmark_settings_file.close()
 
