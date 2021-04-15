@@ -11,8 +11,7 @@ namespace itis {
 	}
 	
 	SegmentTreeMin::~SegmentTreeMin () {
-		deleteNodes_ (headNode_);
-		headNode_= nullptr;
+	      deleteNodes_ (headNode_);
 		size_ = 0;
 	}
 	

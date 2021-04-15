@@ -7,18 +7,16 @@
 #include <vector>       // vector
 #include <iterator>     // istream_iterator
 // подключаем вашу структуру данных
-#include "segment_tree_sum.hpp"
 
 using namespace std;
-using namespace itis;
 
 // абсолютный путь до набора данных и папки проекта
 static constexpr auto kDatasetPath = string_view{PROJECT_DATASET_DIR};
 static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 static constexpr auto kBenchmarkResultsPath = string_view{PROJECT_BENCHMARK_RESULT_DIR};
-static const string kBenchmarkResultOutputFile = "segment_tree_sum_getSum_benchmark.csv";
+static const string kBenchmarkResultOutputFile = "linear_getSum_benchmark.csv";
 
-int main(int argc, char **argv) {
+int main() {
 
   // работа с набором данных
   const auto path = string(kDatasetPath);
@@ -55,14 +53,15 @@ int main(int argc, char **argv) {
 
 
     for (int i = 0; i < number_of_passes; ++i){
+      int sum = 0;
       const auto time_point_before = chrono::steady_clock::now();
-
       // здесь находится участок кода, время которого необходимо замерить
-      auto segmentTreeSum = new SegmentTreeSum(dataset, count_of_samples);
 
+      for (int j = 0; j < count_of_samples; ++j) {
+        sum+=dataset[j];
+      }
       const auto time_point_after = chrono::steady_clock::now();
 
-      segmentTreeSum->getSum(0,count_of_samples);
 
       const auto time_diff = time_point_after - time_point_before;
       const long time_elapsed_ns = chrono::duration_cast<chrono::nanoseconds>(time_diff).count();

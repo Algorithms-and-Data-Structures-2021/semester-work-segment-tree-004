@@ -8,8 +8,8 @@ namespace itis {
 	}
 	
 	SegmentTreeSum::~SegmentTreeSum () {
+		//todo delete nods
 		deleteNodes (headNode_);
-		headNode_ = nullptr;
 		size_ = 0;
 	}
 	

@@ -49,14 +49,13 @@ def create_graphs():
 
     plt.plot(benchmark_results[0].samples_count_list,
              benchmark_results[0].time_list)
-    plt.plot(benchmark_results[1].samples_count_list,
-             benchmark_results[1].time_list)
-    plt.title(benchmark_results[0].name)
+    plt.plot(benchmark_results[2].samples_count_list,
+             benchmark_results[2].time_list)
+    plt.title(benchmark_results[0].name + " " + benchmark_results[2].name)
 
-    plt.ylabel("время", size=14, color='green')
-    plt.xlabel("размер нgit aабора", size=14,color='green')
+    plt.ylabel("time, ns", size=14, color='green')
+    plt.xlabel("samples amount", size=14,color='green')
 
-    plt.legend()
     plt.show()
 
 if __name__ == "__main__":
