@@ -16,10 +16,10 @@ static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 static constexpr auto kBenchmarkResultsPath = string_view{PROJECT_BENCHMARK_RESULT_DIR};
 static const string kBenchmarkResultOutputFile = "linear_getMin_benchmark.csv";
 
-int main(int argc, char **argv) {
+int main() {
 
   // работа с набором данных
-  const auto path = string(kDatasetPath);
+  const auto path = string(kDatasetPath) +  + "/getMin";
   cout << "Path to the 'dataset/' folder: " << path << endl;
   const auto path_to_benchmark_result = string(kBenchmarkResultsPath) + "/" + kBenchmarkResultOutputFile;
 
@@ -74,6 +74,7 @@ int main(int argc, char **argv) {
 
     benchmark_result_output.flush();
     input_file.close();
+    delete[] dataset;
   }
 
   // Контрольный тест: операции добавления, удаления, поиска и пр. над структурой данных

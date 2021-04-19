@@ -1,0 +1,50 @@
+{
+  "benchmarkGraphs": [
+    {
+      "title": "sum of segment(whole segment): segment tree - linear impl",
+      "sources":[
+        "linear_getSum_benchmark.csv",
+        "segment_tree_sum_getSum_wholeSegment_benchmark.csv"
+      ],
+      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(whole segment).png"
+    },
+    {
+      "title": "sum of segment(random segment): segment tree - linear impl",
+      "sources":[
+        "linear_getSum_benchmark.csv",
+        "segment_tree_sum_getSum_average_benchmark.csv"
+      ],
+      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(average).png"
+    },
+    {
+      "title": "build tree: sum segment tree",
+      "sources":[
+        "segment_tree_sum_buildTree_benchmark.csv"
+      ],
+      "outputFile": "build_tree.png"
+    },
+    {
+      "title": "build tree: min segment tree",
+      "sources":[
+        "segment_tree_min_buildTree_benchmark.csv"
+      ],
+      "outputFile": "build_min_segment_tree.png"
+    },
+    {
+      "title": "min of segment(whole segment): segment tree - linear impl",
+      "sources":[
+        "linear_getMin_benchmark.csv",
+        "segment_tree_min_getMin_wholeSegment_benchmark.csv"
+      ],
+      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(whole segment).png"
+    },
+    {
+      "title": "min of segment(random segment): segment tree - linear impl",
+      "sources":[
+        "linear_getMin_benchmark.csv",
+        "segment_tree_min_getMin_average_benchmark.csv"
+      ],
+      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(average).png"
+    }
+  ]
+}

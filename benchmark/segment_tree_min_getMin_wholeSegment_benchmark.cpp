@@ -16,12 +16,12 @@ using namespace itis;
 static constexpr auto kDatasetPath = string_view{PROJECT_DATASET_DIR};
 static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 static constexpr auto kBenchmarkResultsPath = string_view{PROJECT_BENCHMARK_RESULT_DIR};
-static const string  kBenchmarkResultOutputFile = "segment_tree_min_getMin_benchmark.csv";
+static const string  kBenchmarkResultOutputFile = "segment_tree_min_getMin_wholeSegment_benchmark.csv";
 
-int main(int argc, char **argv) {
+int main() {
 
   // работа с набором данных
-  const auto path = string(kDatasetPath);
+  const auto path = string(kDatasetPath) +  + "/getMin";
   cout << "Path to the 'dataset/' folder: " << path << endl;
   const auto path_to_benchmark_result = string(kBenchmarkResultsPath) + "/" + kBenchmarkResultOutputFile;
 
@@ -68,9 +68,11 @@ int main(int argc, char **argv) {
       cout << "Dataset: " << dataset_settings[0] << " Time elapsed (ns): " << time_elapsed_ns << " \n";
       benchmark_result_output << dataset_settings[1] << "," << to_string(time_elapsed_ns) << "\n";
     }
+    delete segmentTreeMin;
 
     benchmark_result_output.flush();
     input_file.close();
+    delete[] dataset;
   }
 
   // Контрольный тест: операции добавления, удаления, поиска и пр. над структурой данных

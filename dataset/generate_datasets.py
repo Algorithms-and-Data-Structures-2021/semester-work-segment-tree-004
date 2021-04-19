@@ -1,8 +1,9 @@
 import json
+import random
 import os
 
 DATASETS_JSON = "datasets.json"
-BENCHMARK_SETTINGS_FILE = "data/benchmarkSettings.settings"
+BENCHMARK_SETTINGS_FILE = "benchmarkSettings.settings"
 
 
 class Dataset(object):
@@ -13,28 +14,29 @@ class Dataset(object):
     def create_dataset(self):
         with open(self.output_path, 'w') as file:
             for i in range(1, self.samples_count):
-                file.write('{} '.format(i))
-            file.write(str(self.samples_count))
+                file.write('{} '.format(random.randrange(1,1000)))
+            file.write(str(random.randrange(1,1000)))
 
 
 def create_datasets():
     with open("datasets.json", "r") as f:
         datasets_dict = json.load(f)
 
-    target_folder = datasets_dict["targetFolder"]
+    folder = datasets_dict["folder"]
     file_format = datasets_dict["fileFormat"]
 
-    benchmark_settings_file = open(BENCHMARK_SETTINGS_FILE, "w")
+    for dataset_package in datasets_dict["datasetPackages"]:
+        target_folder = dataset_package["targetFolder"]
+        benchmark_settings_file = open("data/{}/{}".format(target_folder,BENCHMARK_SETTINGS_FILE), "w")
 
-    for dataset in datasets_dict["datasets"]:
-        Dataset(dataset["samplesCount"],
-                os.path.dirname(__file__) + "/" + target_folder + dataset["outputFileName"] + "." + file_format)\
-            .create_dataset()
-        benchmark_settings_file.write(dataset["outputFileName"] +
-                                      "." + file_format + " " +
-                                      str(dataset["samplesCount"]) + " " + str(dataset["numberOfPasses"]) +"\n")
-
-    benchmark_settings_file.close()
+        for dataset in dataset_package["datasets"]:
+            Dataset(dataset["samplesCount"],
+                    os.path.dirname(__file__) + "/" + folder + target_folder + dataset["outputFileName"] + "." + file_format) \
+                .create_dataset()
+            benchmark_settings_file.write(dataset["outputFileName"] +
+                                          "." + file_format + " " +
+                                          str(dataset["samplesCount"]) + " " + str(dataset["numberOfPasses"]) +"\n")
+        benchmark_settings_file.close()
 
 
 if __name__ == "__main__":

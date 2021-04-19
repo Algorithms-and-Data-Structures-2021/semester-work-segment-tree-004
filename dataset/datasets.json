@@ -1,76 +1,306 @@
 {
-  "targetFolder": "data/",
+  "folder": "data/",
   "fileFormat": "dataset",
-  "datasets": [
+  "datasetPackages": [
     {
-      "samplesCount": 100,
-      "outputFileName": "dataset_of_100",
-      "numberOfPasses": 100
+      "targetFolder": "buildTree/",
+      "datasets":[
+        {
+          "samplesCount": 100,
+          "outputFileName": "dataset_of_100",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500,
+          "outputFileName": "dataset_of_500",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000,
+          "outputFileName": "dataset_of_1000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000,
+          "outputFileName": "dataset_of_5000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 10000,
+          "outputFileName": "dataset_of_10000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 25000,
+          "outputFileName": "dataset_of_25000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 50000,
+          "outputFileName": "dataset_of_50000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 100000,
+          "outputFileName": "dataset_of_100000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 250000,
+          "outputFileName": "dataset_of_250000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500000,
+          "outputFileName": "dataset_of_500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 750000,
+          "outputFileName": "dataset_of_750000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000000,
+          "outputFileName": "dataset_of_1000000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 2500000,
+          "outputFileName": "dataset_of_2500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000000,
+          "outputFileName": "dataset_of_5000000",
+          "numberOfPasses": 100
+        }
+      ]
     },
     {
-      "samplesCount": 500,
-      "outputFileName": "dataset_of_500",
-      "numberOfPasses": 100
+      "targetFolder": "getSum/",
+      "datasets":[
+        {
+          "samplesCount": 100,
+          "outputFileName": "dataset_of_100",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500,
+          "outputFileName": "dataset_of_500",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000,
+          "outputFileName": "dataset_of_1000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000,
+          "outputFileName": "dataset_of_5000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 10000,
+          "outputFileName": "dataset_of_10000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 25000,
+          "outputFileName": "dataset_of_25000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 50000,
+          "outputFileName": "dataset_of_50000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 100000,
+          "outputFileName": "dataset_of_100000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 250000,
+          "outputFileName": "dataset_of_250000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500000,
+          "outputFileName": "dataset_of_500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 750000,
+          "outputFileName": "dataset_of_750000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000000,
+          "outputFileName": "dataset_of_1000000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 2500000,
+          "outputFileName": "dataset_of_2500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000000,
+          "outputFileName": "dataset_of_5000000",
+          "numberOfPasses": 100
+        }
+      ]
     },
     {
-      "samplesCount": 1000,
-      "outputFileName": "dataset_of_1000",
-      "numberOfPasses": 100
+      "targetFolder": "update/",
+      "datasets":[
+        {
+          "samplesCount": 100,
+          "outputFileName": "dataset_of_100",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500,
+          "outputFileName": "dataset_of_500",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000,
+          "outputFileName": "dataset_of_1000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000,
+          "outputFileName": "dataset_of_5000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 10000,
+          "outputFileName": "dataset_of_10000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 25000,
+          "outputFileName": "dataset_of_25000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 50000,
+          "outputFileName": "dataset_of_50000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 100000,
+          "outputFileName": "dataset_of_100000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 250000,
+          "outputFileName": "dataset_of_250000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500000,
+          "outputFileName": "dataset_of_500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 750000,
+          "outputFileName": "dataset_of_750000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000000,
+          "outputFileName": "dataset_of_1000000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 2500000,
+          "outputFileName": "dataset_of_2500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000000,
+          "outputFileName": "dataset_of_5000000",
+          "numberOfPasses": 100
+        }
+      ]
     },
     {
-      "samplesCount": 5000,
-      "outputFileName": "dataset_of_5000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 10000,
-      "outputFileName": "dataset_of_10000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 25000,
-      "outputFileName": "dataset_of_25000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 50000,
-      "outputFileName": "dataset_of_50000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 100000,
-      "outputFileName": "dataset_of_100000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 250000,
-      "outputFileName": "dataset_of_250000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 500000,
-      "outputFileName": "dataset_of_500000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 750000,
-      "outputFileName": "dataset_of_750000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 1000000,
-      "outputFileName": "dataset_of_1000000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 2500000,
-      "outputFileName": "dataset_of_2500000",
-      "numberOfPasses": 100
-    },
-    {
-      "samplesCount": 5000000,
-      "outputFileName": "dataset_of_5000000",
-      "numberOfPasses": 100
+      "targetFolder": "getMin/",
+      "datasets":[
+        {
+          "samplesCount": 100,
+          "outputFileName": "dataset_of_100",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500,
+          "outputFileName": "dataset_of_500",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000,
+          "outputFileName": "dataset_of_1000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000,
+          "outputFileName": "dataset_of_5000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 10000,
+          "outputFileName": "dataset_of_10000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 25000,
+          "outputFileName": "dataset_of_25000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 50000,
+          "outputFileName": "dataset_of_50000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 100000,
+          "outputFileName": "dataset_of_100000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 250000,
+          "outputFileName": "dataset_of_250000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 500000,
+          "outputFileName": "dataset_of_500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 750000,
+          "outputFileName": "dataset_of_750000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 1000000,
+          "outputFileName": "dataset_of_1000000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 2500000,
+          "outputFileName": "dataset_of_2500000",
+          "numberOfPasses": 100
+        },
+        {
+          "samplesCount": 5000000,
+          "outputFileName": "dataset_of_5000000",
+          "numberOfPasses": 100
+        }
+      ]
     }
   ]
 }

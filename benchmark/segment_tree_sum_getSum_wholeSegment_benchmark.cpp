@@ -16,12 +16,12 @@ using namespace itis;
 static constexpr auto kDatasetPath = string_view{PROJECT_DATASET_DIR};
 static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 static constexpr auto kBenchmarkResultsPath = string_view{PROJECT_BENCHMARK_RESULT_DIR};
-static const string kBenchmarkResultOutputFile = "segment_tree_sum_getSum_benchmark.csv";
+static const string kBenchmarkResultOutputFile = "segment_tree_sum_getSum_wholeSegment_benchmark.csv";
 
-int main(int argc, char **argv) {
+int main() {
 
   // работа с набором данных
-  const auto path = string(kDatasetPath);
+  const auto path = string(kDatasetPath) +  + "/getSum";
   cout << "Path to the 'dataset/' folder: " << path << endl;
   const auto path_to_benchmark_result = string(kBenchmarkResultsPath) + "/" + kBenchmarkResultOutputFile;
 
@@ -54,24 +54,27 @@ int main(int argc, char **argv) {
     }
 
 
+    auto segmentTreeSum = new SegmentTreeSum(dataset, count_of_samples);
     for (int i = 0; i < number_of_passes; ++i){
       const auto time_point_before = chrono::steady_clock::now();
 
       // здесь находится участок кода, время которого необходимо замерить
-      auto segmentTreeSum = new SegmentTreeSum(dataset, count_of_samples);
+      segmentTreeSum->getSum(0,count_of_samples-1);
+
 
       const auto time_point_after = chrono::steady_clock::now();
 
-      segmentTreeSum->getSum(0,count_of_samples);
 
       const auto time_diff = time_point_after - time_point_before;
       const long time_elapsed_ns = chrono::duration_cast<chrono::nanoseconds>(time_diff).count();
       cout << "Dataset: " << dataset_settings[0] << " Time elapsed (ns): " << time_elapsed_ns << " \n";
       benchmark_result_output << dataset_settings[1] << "," << to_string(time_elapsed_ns) << "\n";
     }
+    delete segmentTreeSum;
 
     benchmark_result_output.flush();
     input_file.close();
+    delete[] dataset;
   }
 
   // Контрольный тест: операции добавления, удаления, поиска и пр. над структурой данных
