@@ -133,7 +133,7 @@ cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --config RelWithDebInfo --bu
 cd dataset
 ```
 
-Скрипт генерирует наборы данных описанные в файле [`dataset`](dataset)/[`datasetsConfig.json`](datasetsConfig.json)
+Скрипт генерирует наборы данных описанные в файле [`dataset`](dataset)/[`datasetsConfig.json`](dataset/datasetsConfig.json)
 
 Вы можете использовать **готовую конфигурацию** или написать собственную:
 
