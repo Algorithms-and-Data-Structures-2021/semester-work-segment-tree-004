@@ -21,7 +21,7 @@
       "sources":[
         "segment_tree_sum_buildTree_benchmark.csv"
       ],
-      "outputFile": "build_tree.png"
+      "outputFile": "build_sum_segment_tree.png"
     },
     {
       "title": "build tree: min segment tree",
@@ -36,7 +36,7 @@
         "linear_getMin_benchmark.csv",
         "segment_tree_min_getMin_wholeSegment_benchmark.csv"
       ],
-      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(whole segment).png"
+      "outputFile": "min_of_segment_segment_tree_vs_linear_impl(whole segment).png"
     },
     {
       "title": "min of segment(random segment): segment tree - linear impl",
@@ -44,7 +44,21 @@
         "linear_getMin_benchmark.csv",
         "segment_tree_min_getMin_average_benchmark.csv"
       ],
-      "outputFile": "sum_of_segment_segment_tree_vs_linear_impl(average).png"
+      "outputFile": "min_of_segment_segment_tree_vs_linear_impl(average).png"
+    },
+    {
+      "title": "update: segment_tree_sum",
+      "sources":[
+        "segment_tree_sum_update_benchmark.csv"
+      ],
+      "outputFile": "segment_tree_sum_update.png"
+    },
+    {
+      "title": "update: segment_tree_min",
+      "sources":[
+        "segment_tree_min_update_benchmark.csv"
+      ],
+      "outputFile": "segment_tree_min_update.png"
     }
   ]
 }

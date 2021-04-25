@@ -2,7 +2,7 @@ import json
 import random
 import os
 
-DATASETS_JSON = "datasets.json"
+DATASETS_JSON = "datasetsConfig.json"
 BENCHMARK_SETTINGS_FILE = "benchmarkSettings.settings"
 
 
@@ -19,7 +19,7 @@ class Dataset(object):
 
 
 def create_datasets():
-    with open("datasets.json", "r") as f:
+    with open("datasetsConfig.json", "r") as f:
         datasets_dict = json.load(f)
 
     folder = datasets_dict["folder"]

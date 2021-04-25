@@ -57,6 +57,7 @@ def get_benchmark_results() -> dict:
 
     # closing files
     for benchmark_result in benchmark_csv_results:
+
         benchmark_result.close()
 
     return benchmark_results
